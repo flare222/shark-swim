@@ -1,0 +1,109 @@
+
+Steps to follow for tonight’s homework:
+
+- Install packages
+in this case, express, body-parser & mongoose 
+
+- config/environment.js
+Set up the file (do look up how we did it in class you’re 
+not expected to know the syntax for this)
+call your database whatever you want your collection to be called
+
+- index.js
+require express, port - get the app running first (console.log). 
+Check everything is working using $ yarn start
+
+- index.js
+Set up mongoose, databaseURI - make sure this connects. 
+If they both work don’t forget to add your body-parser next.
+
+- logger
+Set up the logger file. 
+
+- index.js 
+import the logger and check everything is working 
+(don’t worry about the router yet)
+
+- models
+don’t forget to require mongoose!
+Make the schema (and model), keep it simple!
+
+- db/ seeds.js
+Make seeds file and test that it builds (3 seeds is enough)
+Don’t forget to import your model. 
+Add the 'seed' script in your package.json (check the classwork's 
+package json;
+Don’t forget to run this command for the seeds to be added to 
+the DB:
+$ yarn seed 
+
+- router & controllers 
+Make routes and each controller - INDEX and CREATE are required, 
+SHOW, UPDATE, DELETE are bonus
+Only write one route at one time and test in insomnia in between. 
+
+- index.js
+don’t forget to import the router! 
+
+
+------------------------------------------------------------------
+The file structure should look like this:
+-> config
+   — environment.js
+   — router.js
+-> controllers
+   — js file for your controllers
+-> db
+   — seeds.js
+-> models
+   — js file for your models
+-> lib
+  -logger.js
+-> index.js
+------------------------------------------------------------------
+
+​### Requirements
+​
+Use your lesson notes along with the classwork from today as a reference.
+​
+* You should have one model (of your choice)
+* You should be able to perform INDEX and CREATE actions
+* Include a seeds file
+​
+### Bonus
+​
+* Have a go at adding the other RESTful routes: SHOW, UPDATE and DELETE.
+
+Steps to add comments & current user authentication: 
+1. models > Dinosour
+Start with building comments
+Build an embedded schema to embed in the model
+Don’t do the user bit straight away
+Register the schema in the parent model you want it to live in (you can keep in the same file). 
+
+2. controllers > dinosours
+In the dinosour controller build and test the post and delete routes for the comments (do them separately and test!)
+
+3. models > Dinosour
+Build the user reference relationship
+In the dinosour model add the reference to the user who created it
+
+4. db > seeds.js
+Alter the seeds to create some users
+Attribute the user to the dinosour
+*Check the seeds run! ( $ yarn seed)*
+
+5. controllers > dinosours
+In the dinosour controllers populate the user fields
+
+6. Insomnia
+Test  the API - you should see the passwords coming through
+
+7. models > User
+In the user model add the transform method that stops the response from showing the password
+
+8. controllers > dinosours
+Come back to the create route
+Attach a user key to the body (this needs to match the one in the secure route)
+Repeat the same step for comments
+In the update and delete dinosour controllers add the logic that checks if the person trying to edit it is the same as the one who created the resource.
