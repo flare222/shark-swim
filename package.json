@@ -4,9 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start:back": "nodemon",
-    "start:front": "webpack-dev-server --mode-development",
-    "seed": "node db/seeds.js"
+    "dev:back": "nodemon",
+    "dev:front": "webpack-dev-server --mode-development",
+    "seed": "node db/seeds.js",
+    "start": "node index.js",
+    "build": "webpack -p"
   },
   "dependencies": {
     "axios": "^0.19.1",
